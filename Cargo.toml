@@ -1,0 +1,33 @@
+[package]
+name = "gba-esn-mnist"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gba = "0.14.1"
+embedded-alloc = "0.5"
+
+fixed = "1.29.0"
+typenum = "1.17"
+
+# reservoir-train = { git = "https://github.com/haradama/reservoir-rs.git", branch = "feat/no_std", default-features = false, features = [
+#     "fixed_point",
+# ] }
+# reservoir-core = { git = "https://github.com/haradama/reservoir-rs.git", branch = "feat/no_std", default-features = false }
+
+reservoir-train = { path = "../reservoir-rs/crates/train", default-features = false, features = [
+    "fixed_point",
+    "libm",
+] }
+reservoir-core = { path = "../reservoir-rs/crates/core", default-features = false }
+rand = { version = "0.8", default-features = false, features = ["small_rng"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 3
+panic = "abort"
