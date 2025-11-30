@@ -197,6 +197,6 @@ fn panic(info: &core::panic::PanicInfo) -> ! {
 fn video3_clear_to(color: Color) {
     let vram = 0x0600_0000 as *mut u16;
     for i in 0..(SCREEN_W * SCREEN_H) {
-        unsafe { vram.add(i).write_volatile(color.0) };
+        unsafe { vram.add(i.try_into().unwrap()).write_volatile(color.0) };
     }
 }
