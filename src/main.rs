@@ -9,9 +9,10 @@ use embedded_alloc::Heap;
 use fixed::types::I20F12;
 use gba::prelude::*;
 
+use reservoir_core::rmse;
 use reservoir_core::types::Scalar;
-use reservoir_train::mackey_glass::{MackeyGlass, MackeyGlassParams};
-use reservoir_train::{rmse, ESNBuilder};
+use reservoir_datasets::mackey_glass::{MackeyGlass, MackeyGlassParams};
+use reservoir_train::ESNBuilder;
 
 const SCREEN_W: i32 = 240;
 const SCREEN_H: i32 = 160;

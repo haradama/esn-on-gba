@@ -20,6 +20,8 @@ reservoir-train = { path = "../reservoir-rs/crates/train", default-features = fa
     "libm",
 ] }
 reservoir-core = { path = "../reservoir-rs/crates/core", default-features = false }
+reservoir-datasets = { path = "../reservoir-rs/crates/datasets" }
+
 rand = { version = "0.8", default-features = false, features = ["small_rng"] }
 
 [profile.release]
