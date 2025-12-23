@@ -6,22 +6,15 @@ edition = "2021"
 [dependencies]
 gba = "0.14.1"
 embedded-alloc = "0.5"
+libm = "0.2.15"
+reservoir-infer = { version = "0.1.0", default-features = false, features = ["libm"] }
+nalgebra = { version = "0.33.2", default-features = false, features = ["libm"] }
+heapless = { version = "0.9.2", default-features = false, features = ["portable-atomic-critical-section"] }
 
-fixed = "1.29.0"
-typenum = "1.17"
-
-# reservoir-train = { git = "https://github.com/haradama/reservoir-rs.git", branch = "feat/no_std", default-features = false, features = [
-#     "fixed_point",
-# ] }
-# reservoir-core = { git = "https://github.com/haradama/reservoir-rs.git", branch = "feat/no_std", default-features = false }
-
-# reservoir-train = { path = "../reservoir-rs/crates/train", default-features = false, features = [
-#     "fixed_point",
-#     "libm",
-# ] }
-# reservoir-core = { path = "../reservoir-rs/crates/core", default-features = false }
-reservoir-datasets = { path = "../reservoir-rs/crates/datasets", default-features = false }
-rand = { version = "0.8", default-features = false, features = ["small_rng"] }
+[build-dependencies]
+nalgebra = "0.33.2"
+rand = "0.9.2"
+reservoir-datasets = { version = "0.1.0", default-features = true }
 
 [profile.release]
 opt-level = 3
